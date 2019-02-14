@@ -1,13 +1,14 @@
-package com.github.developer__
+package it.marcomirisola
 
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.RelativeLayout
-import com.github.developer__.asycn.ClipDrawableProcessorTask
-import com.github.developer__.extensions.loadImage
-import com.github.developer__.extensions.stayVisibleOrGone
+import com.github.developer__.R
+import it.marcomirisola.async.ClipDrawableProcessorTask
+import it.marcomirisola.extensions.loadImage
+import it.marcomirisola.extensions.stayVisibleOrGone
 import kotlinx.android.synthetic.main.slider_layout.view.*
 
 /**

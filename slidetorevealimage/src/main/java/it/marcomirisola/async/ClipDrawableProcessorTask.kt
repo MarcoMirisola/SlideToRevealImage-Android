@@ -1,4 +1,4 @@
-package com.github.developer__.asycn
+package it.marcomirisola.async
 
 import android.content.Context
 import android.graphics.Bitmap

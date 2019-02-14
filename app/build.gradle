@@ -5,7 +5,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "it.marcomirisola.beforeafterslider"
+        applicationId "it.marcomirisola.slidetorevealimage"
         minSdkVersion 21
         targetSdkVersion 28
 
@@ -27,7 +27,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation project(":beforeafterslider")
+    implementation project(':slidetorevealimage')
     implementation 'androidx.appcompat:appcompat:1.0.2'
 }
 repositories {
