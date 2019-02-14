@@ -2,6 +2,10 @@
 <p align="center">
   <img src="before-after-slider.gif"/>
 </p>
+
+<h2> This project is heavy based from <a href="https://github.com/developer--/before_after_slider"> before_after_slider  from @developer--</a> </h2>
+
+
 The library uses Glide for image loading
 
 ---------------------------------------------------------
