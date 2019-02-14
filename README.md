@@ -3,19 +3,8 @@
   <img src="before-after-slider.gif"/>
 </p>
 
-<h2> This project is heavy based from <a href="https://github.com/developer--/before_after_slider"> before_after_slider  from @developer--</a> </h2>
-
-
-The library uses Glide for image loading
-
----------------------------------------------------------
-
-Fix: The image clip retains its last position when screen orientation changes.
-
----------------------------------------------------------
-
 ```java
-  <com.github.developer__.BeforeAfterSlider
+  <it.marcomirisola.BeforeAfterSlider
         android:id="@+id/mySlider"
         android:layout_width="match_parent"
         android:layout_height="300dp"
@@ -43,19 +32,15 @@ Fix: The image clip retains its last position when screen orientation changes.
 <h1>Gradle dependency</h1>
 
 ```groovy        
-//ORIGINAL
-//add this to your top level build.gradle file
- maven { url 'https://dl.bintray.com/kandroid/maven' }
- 
-//and add this to your module level build.gradle file
-  compile 'com.github.developer--:beforeafterslider:1.0.4'
-  
-//MY VERSION
 //add this to your top level build.gradle file
   maven { url 'https://jitpack.io' }
       
 //and add this to your module level build.gradle file
-  implementation 'com.github.blackfox94:before_after_slider:701e3d5861'
+ implementation 'com.github.MarcoMirisola:SlideToRevealImage:v2.0'
+
 ```
+The library uses Glide for image loading
+
+<h2> This project is heavy based from <a href="https://github.com/developer--/before_after_slider"> before_after_slider  from @developer--</a> </h2>
 
 <h1><a href="https://github.com/ioramashvili/BeforeAfterSlider"> iOS version</a> </h1>
