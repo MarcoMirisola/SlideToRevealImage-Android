@@ -36,7 +36,7 @@
   maven { url 'https://jitpack.io' }
       
 //and add this to your module level build.gradle file
- implementation 'com.github.MarcoMirisola:SlideToRevealImage:v2.0'
+ implementation 'com.github.MarcoMirisola:SlideToRevealImage:v2.1'
 
 ```
 The library uses Glide for image loading
