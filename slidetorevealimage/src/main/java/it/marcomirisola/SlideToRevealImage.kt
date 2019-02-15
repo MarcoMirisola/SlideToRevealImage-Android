@@ -15,17 +15,17 @@ import kotlinx.android.synthetic.main.slider_layout.view.*
  * Created by Jemo on 12/5/16.
  */
 
-class BeforeAfterSlider : RelativeLayout, ClipDrawableProcessorTask.OnAfterImageLoaded{
+class SlideToRevealImage : RelativeLayout, ClipDrawableProcessorTask.OnAfterImageLoaded{
 
     constructor(context: Context): super(context)
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
-        val attr = context.theme.obtainStyledAttributes(attrs, R.styleable.BeforeAfterSlider,0,0)
+        val attr = context.theme.obtainStyledAttributes(attrs, R.styleable.SlideToRevealImage,0,0)
         try {
-            val thumbDrawable = attr.getDrawable(R.styleable.BeforeAfterSlider_slider_thumb)
+            val thumbDrawable = attr.getDrawable(R.styleable.SlideToRevealImage_slider_thumb)
 
-            val beforeImage = attr.getDrawable(R.styleable.BeforeAfterSlider_before_image)
-            val afterImageUrl = attr.getDrawable(R.styleable.BeforeAfterSlider_after_image)
+            val beforeImage = attr.getDrawable(R.styleable.SlideToRevealImage_before_image)
+            val afterImageUrl = attr.getDrawable(R.styleable.SlideToRevealImage_after_image)
 
             setSliderThumb(thumbDrawable)
             setBeforeImage(beforeImage)
@@ -42,12 +42,12 @@ class BeforeAfterSlider : RelativeLayout, ClipDrawableProcessorTask.OnAfterImage
     /**
      * set original image
      */
-    fun setBeforeImage(imageUri: String): BeforeAfterSlider {
+    fun setBeforeImage(imageUri: String): SlideToRevealImage {
         before_image_view_id.loadImage(imageUri)
         return this
     }
 
-    fun setBeforeImage(imgDrawable: Drawable?): BeforeAfterSlider {
+    fun setBeforeImage(imgDrawable: Drawable?): SlideToRevealImage {
         before_image_view_id.loadImage(imgDrawable)
         return this
     }

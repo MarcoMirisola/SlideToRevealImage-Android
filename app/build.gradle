@@ -10,16 +10,17 @@ android {
         applicationId "it.marcomirisola.slidetorevealimage"
         minSdkVersion 21
         targetSdkVersion 28
-
-        versionCode 3
-        versionName "2.0"
+        versionCode 4
+        versionName "2.1"
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
@@ -27,11 +28,11 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':slidetorevealimage')
     implementation 'androidx.appcompat:appcompat:1.0.2'
 }
+
 repositories {
     mavenCentral()
 }

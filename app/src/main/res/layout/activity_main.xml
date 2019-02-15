@@ -4,16 +4,14 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.awesomekotlin.beforeafterslider.MainActivity">
+    android:orientation="vertical">
 
 
-    <it.marcomirisola.BeforeAfterSlider
+    <it.marcomirisola.SlideToRevealImage
         android:id="@+id/before_after_slider_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
-
-    </it.marcomirisola.BeforeAfterSlider>
+    </it.marcomirisola.SlideToRevealImage>
 
 </LinearLayout>

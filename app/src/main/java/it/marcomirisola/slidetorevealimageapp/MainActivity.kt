@@ -1,4 +1,4 @@
-package com.awesomekotlin.beforeafterslider
+package it.marcomirisola.slidetorevealimageapp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

@@ -4,7 +4,7 @@
 </p>
 
 ```java
-  <it.marcomirisola.BeforeAfterSlider
+  <it.marcomirisola.SlideToRevealImage
         android:id="@+id/mySlider"
         android:layout_width="match_parent"
         android:layout_height="300dp"
