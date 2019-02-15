@@ -102,6 +102,8 @@ class ClipDrawableProcessorTask<T>(imageView: ImageView, seekBar: SeekBar, priva
 
             }
         })
+
+
     }
 
     interface OnAfterImageLoaded {
