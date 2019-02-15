@@ -1,6 +1,6 @@
 # <h1 align="center">Before and after image slider</h1>
 <p align="center">
-  <img src="before-after-slider.gif"/>
+  <img src="slide_to_reveal.gif"/>
 </p>
 
 ```java
