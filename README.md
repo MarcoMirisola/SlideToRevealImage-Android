@@ -41,6 +41,6 @@
 ```
 The library uses Glide for image loading
 
-<h2> This project is heavy based from <a href="https://github.com/developer--/before_after_slider"> before_after_slider  from @developer--</a> </h2>
+<h2> This project is heavy based from <a href="https://github.com/developer--/before_after_slider"> before_after_slider from @developer--</a> </h2>
 
-<h1><a href="https://github.com/ioramashvili/BeforeAfterSlider"> iOS version</a> </h1>
+<h1><a href="https://github.com/MarcoMirisola/SlideToRevealImage-iOS">iOS version</a> </h1>
