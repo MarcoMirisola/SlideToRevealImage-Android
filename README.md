@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/MarcoMirisola/SlideToRevealImage-Android.svg?branch=master)](https://travis-ci.org/MarcoMirisola/SlideToRevealImage-Android)
+
 # <h1 align="center">Before and after image slider</h1>
 <p align="center">
   <img src="slide_to_reveal.gif"/>
