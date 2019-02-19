@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/MarcoMirisola/SlideToRevealImage-Android.svg?branch=master)](https://travis-ci.org/MarcoMirisola/SlideToRevealImage-Android)
+[![](https://jitpack.io/v/MarcoMirisola/SlideToRevealImage-Android.svg)](https://jitpack.io/#MarcoMirisola/SlideToRevealImage-Android)
+
 
 # <h1 align="center">Before and after image slider</h1>
 <p align="center">
@@ -38,7 +40,7 @@
   maven { url 'https://jitpack.io' }
       
 //and add this to your module level build.gradle file
- implementation 'com.github.MarcoMirisola:SlideToRevealImage:v2.1'
+ implementation 'com.github.MarcoMirisola:SlideToRevealImage-Android:v2.1'
 
 ```
 The library uses Glide for image loading
