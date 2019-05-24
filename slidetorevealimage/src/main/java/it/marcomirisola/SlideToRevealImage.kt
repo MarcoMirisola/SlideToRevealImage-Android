@@ -22,14 +22,22 @@ class SlideToRevealImage : RelativeLayout, ClipDrawableProcessorTask.OnAfterImag
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         val attr = context.theme.obtainStyledAttributes(attrs, R.styleable.SlideToRevealImage,0,0)
         try {
-            val thumbDrawable = attr.getDrawable(R.styleable.SlideToRevealImage_slider_thumb)
+            val thumbDrawable1 = attr.getDrawable(R.styleable.SlideToRevealImage_slider_thumb1)
+            val thumbDrawable2 = attr.getDrawable(R.styleable.SlideToRevealImage_slider_thumb2)
+            val thumbDrawable3 = attr.getDrawable(R.styleable.SlideToRevealImage_slider_thumb3)
 
             val beforeImage = attr.getDrawable(R.styleable.SlideToRevealImage_before_image)
-            val afterImageUrl = attr.getDrawable(R.styleable.SlideToRevealImage_after_image)
+            val afterImageUrl1 = attr.getDrawable(R.styleable.SlideToRevealImage_after_image1)
+            val afterImageUrl2 = attr.getDrawable(R.styleable.SlideToRevealImage_after_image2)
+            val afterImageUrl3 = attr.getDrawable(R.styleable.SlideToRevealImage_after_image3)
 
-            setSliderThumb(thumbDrawable)
+            setSliderThumb1(thumbDrawable1)
+            setSliderThumb2(thumbDrawable2)
+            setSliderThumb3(thumbDrawable3)
             setBeforeImage(beforeImage)
-            setAfterImage(afterImageUrl)
+            setAfterImage1(afterImageUrl1)
+            setAfterImage2(afterImageUrl2)
+            setAfterImage3(afterImageUrl3)
         }finally {
             attr.recycle()
         }
@@ -55,23 +63,66 @@ class SlideToRevealImage : RelativeLayout, ClipDrawableProcessorTask.OnAfterImag
     /**
      * set changed image
      */
-    fun setAfterImage(imageUri: String) {
-        ClipDrawableProcessorTask<String>(after_image_view_id, seekbar_id, context, this).execute(imageUri)
+    fun setAfterImage1(imageUri: String) {
+        ClipDrawableProcessorTask<String>(after_image_1_view_id, seekbar_1_id, context, this).execute(imageUri)
     }
 
     /**
      * set changed image
      */
-    fun setAfterImage(imageDrawable: Drawable?) {
-        ClipDrawableProcessorTask<Drawable>(after_image_view_id, seekbar_id, context, this).execute(imageDrawable)
+    fun setAfterImage1(imageDrawable: Drawable?): SlideToRevealImage {
+        ClipDrawableProcessorTask<Drawable>(after_image_1_view_id, seekbar_1_id, context, this).execute(imageDrawable)
+        return this
+    }
+
+    /**
+     * set changed image
+     */
+    fun setAfterImage2(imageUri: String) {
+        ClipDrawableProcessorTask<String>(after_image_2_view_id, seekbar_1_id, context, this).execute(imageUri)
+    }
+
+    /**
+     * set changed image
+     */
+    fun setAfterImage2(imageDrawable: Drawable?): SlideToRevealImage  {
+        ClipDrawableProcessorTask<Drawable>(after_image_2_view_id, seekbar_2_id, context, this).execute(imageDrawable)
+        return this
+    }
+
+    /**
+     * set changed image
+     */
+    fun setAfterImage3(imageDrawable: Drawable?): SlideToRevealImage  {
+        ClipDrawableProcessorTask<Drawable>(after_image_3_view_id, seekbar_3_id, context, this).execute(imageDrawable)
+        return this
+    }
+
+
+    /**
+     * set thumb
+     */
+    fun setSliderThumb1(thumb: Drawable?){
+        thumb?.let {
+            seekbar_1_id.thumb = thumb
+        }
     }
 
     /**
      * set thumb
      */
-    fun setSliderThumb(thumb: Drawable?){
+    fun setSliderThumb2(thumb: Drawable?){
         thumb?.let {
-            seekbar_id.thumb = thumb
+            seekbar_2_id.thumb = thumb
+        }
+    }
+
+    /**
+     * set thumb
+     */
+    fun setSliderThumb3(thumb: Drawable?){
+        thumb?.let {
+            seekbar_3_id.thumb = thumb
         }
     }
 
@@ -79,7 +130,9 @@ class SlideToRevealImage : RelativeLayout, ClipDrawableProcessorTask.OnAfterImag
      * fired up after second image loading will be finished
      */
     override fun onLoadedFinished(loadedSuccess: Boolean) {
-        seekbar_id.stayVisibleOrGone(loadedSuccess)
+        seekbar_1_id.stayVisibleOrGone(loadedSuccess)
+        seekbar_2_id.stayVisibleOrGone(loadedSuccess)
+        seekbar_3_id.stayVisibleOrGone(loadedSuccess)
     }
 
 }

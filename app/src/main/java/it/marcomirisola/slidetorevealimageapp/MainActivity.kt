@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
         val imgUrl2 = "https://raw.githubusercontent.com/MarcoMirisola/SlideToRevealImage/master/image2.png"
 
 //        before_after_slider_id.setBeforeImage(imgUrl1).setAfterImage(imgUrl2)
-        before_after_slider_id.setBeforeImage(getDrawable(R.drawable.image)).setAfterImage(getDrawable(R.drawable.image_bw))
+        before_after_slider_id.setBeforeImage(getDrawable(R.drawable.image)).setAfterImage1(getDrawable(R.drawable.image_bw_1)).setAfterImage2(getDrawable(R.drawable.image_bw_2)).setAfterImage3(getDrawable(R.drawable.image_bw_3))
+//        before_after_slider_id.setBeforeImage(getDrawable(R.drawable.image)).setAfterImage2(getDrawable(R.drawable.image_bw_2))
     }
 }
