@@ -63,8 +63,9 @@ class SlideToRevealImage : RelativeLayout, ClipDrawableProcessorTask.OnAfterImag
     /**
      * set changed image
      */
-    fun setAfterImage1(imageUri: String) {
+    fun setAfterImage1(imageUri: String): SlideToRevealImage {
         ClipDrawableProcessorTask<String>(after_image_1_view_id, seekbar_1_id, context, this).execute(imageUri)
+        return this
     }
 
     /**
@@ -78,8 +79,9 @@ class SlideToRevealImage : RelativeLayout, ClipDrawableProcessorTask.OnAfterImag
     /**
      * set changed image
      */
-    fun setAfterImage2(imageUri: String) {
-        ClipDrawableProcessorTask<String>(after_image_2_view_id, seekbar_1_id, context, this).execute(imageUri)
+    fun setAfterImage2(imageUri: String): SlideToRevealImage {
+        ClipDrawableProcessorTask<String>(after_image_2_view_id, seekbar_2_id, context, this).execute(imageUri)
+        return this
     }
 
     /**
@@ -89,6 +91,15 @@ class SlideToRevealImage : RelativeLayout, ClipDrawableProcessorTask.OnAfterImag
         ClipDrawableProcessorTask<Drawable>(after_image_2_view_id, seekbar_2_id, context, this).execute(imageDrawable)
         return this
     }
+
+    /**
+     * set changed image
+     */
+    fun setAfterImage3(imageUri: String): SlideToRevealImage {
+        ClipDrawableProcessorTask<String>(after_image_3_view_id, seekbar_3_id, context, this).execute(imageUri)
+        return this
+    }
+
 
     /**
      * set changed image
