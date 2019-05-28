@@ -4,44 +4,27 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.RelativeLayout
-import com.github.developer__.R
+import android.widget.SeekBar
 import it.marcomirisola.async.ClipDrawableProcessorTask
 import it.marcomirisola.extensions.loadImage
 import it.marcomirisola.extensions.stayVisibleOrGone
+import it.marcomirisola.slidetorevealimage.R
 import kotlinx.android.synthetic.main.slider_layout.view.*
+
 
 /**
  * Created by Jemo on 12/5/16.
  */
 
-class SlideToRevealImage : RelativeLayout, ClipDrawableProcessorTask.OnAfterImageLoaded{
+class SlideToRevealImage : RelativeLayout, ClipDrawableProcessorTask.OnAfterImageLoaded {
 
-    constructor(context: Context): super(context)
+    constructor(context: Context) : super(context)
 
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
-        val attr = context.theme.obtainStyledAttributes(attrs, R.styleable.SlideToRevealImage,0,0)
-        try {
-            val thumbDrawable1 = attr.getDrawable(R.styleable.SlideToRevealImage_slider_thumb1)
-            val thumbDrawable2 = attr.getDrawable(R.styleable.SlideToRevealImage_slider_thumb2)
-            val thumbDrawable3 = attr.getDrawable(R.styleable.SlideToRevealImage_slider_thumb3)
-
-            val beforeImage = attr.getDrawable(R.styleable.SlideToRevealImage_before_image)
-            val afterImageUrl1 = attr.getDrawable(R.styleable.SlideToRevealImage_after_image1)
-            val afterImageUrl2 = attr.getDrawable(R.styleable.SlideToRevealImage_after_image2)
-            val afterImageUrl3 = attr.getDrawable(R.styleable.SlideToRevealImage_after_image3)
-
-            setSliderThumb1(thumbDrawable1)
-            setSliderThumb2(thumbDrawable2)
-            setSliderThumb3(thumbDrawable3)
-            setBeforeImage(beforeImage)
-            setAfterImage1(afterImageUrl1)
-            setAfterImage2(afterImageUrl2)
-            setAfterImage3(afterImageUrl3)
-        }finally {
-            attr.recycle()
-        }
-    }
+    constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
 
     init {
         LayoutInflater.from(context).inflate(R.layout.slider_layout, this)
@@ -50,100 +33,93 @@ class SlideToRevealImage : RelativeLayout, ClipDrawableProcessorTask.OnAfterImag
     /**
      * set original image
      */
-    fun setBeforeImage(imageUri: String): SlideToRevealImage {
-        before_image_view_id.loadImage(imageUri)
+    fun setBaseImage(imageUri: String): SlideToRevealImage {
+        base_image_view_id.loadImage(imageUri)
         return this
     }
 
-    fun setBeforeImage(imgDrawable: Drawable?): SlideToRevealImage {
-        before_image_view_id.loadImage(imgDrawable)
+    fun setBaseImage(imgDrawable: Drawable?): SlideToRevealImage {
+        base_image_view_id.loadImage(imgDrawable)
         return this
     }
 
-    /**
-     * set changed image
-     */
-    fun setAfterImage1(imageUri: String): SlideToRevealImage {
-        ClipDrawableProcessorTask<String>(after_image_1_view_id, seekbar_1_id, context, this).execute(imageUri)
-        return this
+    fun addImage(imageUri: String?, thumb: Drawable): SlideToRevealImage {
+        return addImage(imageUri, null, thumb)
     }
 
-    /**
-     * set changed image
-     */
-    fun setAfterImage1(imageDrawable: Drawable?): SlideToRevealImage {
-        ClipDrawableProcessorTask<Drawable>(after_image_1_view_id, seekbar_1_id, context, this).execute(imageDrawable)
-        return this
-    }
-
-    /**
-     * set changed image
-     */
-    fun setAfterImage2(imageUri: String): SlideToRevealImage {
-        ClipDrawableProcessorTask<String>(after_image_2_view_id, seekbar_2_id, context, this).execute(imageUri)
-        return this
-    }
-
-    /**
-     * set changed image
-     */
-    fun setAfterImage2(imageDrawable: Drawable?): SlideToRevealImage  {
-        ClipDrawableProcessorTask<Drawable>(after_image_2_view_id, seekbar_2_id, context, this).execute(imageDrawable)
-        return this
-    }
-
-    /**
-     * set changed image
-     */
-    fun setAfterImage3(imageUri: String): SlideToRevealImage {
-        ClipDrawableProcessorTask<String>(after_image_3_view_id, seekbar_3_id, context, this).execute(imageUri)
-        return this
+    fun addImage(imageDrawable: Drawable?, thumb: Drawable): SlideToRevealImage {
+        return addImage(null, imageDrawable, thumb)
     }
 
 
-    /**
-     * set changed image
-     */
-    fun setAfterImage3(imageDrawable: Drawable?): SlideToRevealImage  {
-        ClipDrawableProcessorTask<Drawable>(after_image_3_view_id, seekbar_3_id, context, this).execute(imageDrawable)
+    val imageViews: ArrayList<ImageView> = ArrayList()
+    val thumbDrawables: ArrayList<Drawable> = ArrayList()
+    val seekBars: ArrayList<SeekBar> = ArrayList()
+    val images: ArrayList<Any> = ArrayList()
+
+    private fun addImage(imageUri: String?, imageDrawable: Drawable?, thumb: Drawable): SlideToRevealImage {
+        val imageView = ImageView(context)
+        imageView.layoutParams = LayoutParams(
+            LayoutParams.MATCH_PARENT,
+            LayoutParams.MATCH_PARENT
+        )
+        imageView.scaleType = ImageView.ScaleType.FIT_CENTER
+        imageView.adjustViewBounds = true
+        rootLayout.addView(imageView)
+        imageViews.add(imageView)
+        thumbDrawables.add(thumb)
+
+        imageDrawable?.let { images.add(it) }
+        imageUri?.let { images.add(it) }
+
         return this
     }
 
+    fun build() {
 
-    /**
-     * set thumb
-     */
-    fun setSliderThumb1(thumb: Drawable?){
-        thumb?.let {
-            seekbar_1_id.thumb = thumb
+        for ((index, thumb) in thumbDrawables.withIndex()) {
+            val seekBar = SeekBar(context)
+            seekBar.layoutParams = LinearLayout.LayoutParams(
+                LayoutParams.MATCH_PARENT,
+                0,
+                1f
+            )
+            seekBar.setPadding(0, 0, 0, 0)
+            seekBar.visibility = View.VISIBLE
+            seekBar.max = 10000
+            seekBar.progress = 10000 / (thumbDrawables.size + 1) * (thumbDrawables.size - index)
+
+            seekBar.thumb = thumb
+            seekBar.progressDrawable = null
+
+            seekBars.add(seekBar)
+
+            sliderContainer.addView(seekBar)
         }
-    }
 
-    /**
-     * set thumb
-     */
-    fun setSliderThumb2(thumb: Drawable?){
-        thumb?.let {
-            seekbar_2_id.thumb = thumb
-        }
-    }
+        for (index in 0 until imageViews.size) {
+            val imageView = imageViews[index]
+            val seekBar = seekBars[index]
+            val image = images[index]
 
-    /**
-     * set thumb
-     */
-    fun setSliderThumb3(thumb: Drawable?){
-        thumb?.let {
-            seekbar_3_id.thumb = thumb
+            if (image is Drawable) {
+                ClipDrawableProcessorTask<Drawable>(imageView, seekBar, context, this).execute(image)
+            } else {
+                ClipDrawableProcessorTask<String>(imageView, seekBar, context, this).execute(image as String?)
+            }
         }
+
+
     }
 
     /**
      * fired up after second image loading will be finished
      */
     override fun onLoadedFinished(loadedSuccess: Boolean) {
-        seekbar_1_id.stayVisibleOrGone(loadedSuccess)
-        seekbar_2_id.stayVisibleOrGone(loadedSuccess)
-        seekbar_3_id.stayVisibleOrGone(loadedSuccess)
+        sliderContainer.bringToFront()
+        for (x in 0 until sliderContainer.childCount) {
+            val view = sliderContainer.getChildAt(x)
+            view.stayVisibleOrGone(loadedSuccess)
+        }
     }
-
 }

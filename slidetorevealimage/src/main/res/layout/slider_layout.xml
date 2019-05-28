@@ -2,34 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:id="@+id/rootLayout">
 
     <ImageView
-            android:id="@+id/before_image_view_id"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="fitCenter"
-            android:adjustViewBounds="true"
-    />
-
-    <ImageView
-            android:id="@+id/after_image_1_view_id"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="fitCenter"
-            android:adjustViewBounds="true"
-    />
-
-    <ImageView
-            android:id="@+id/after_image_2_view_id"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="fitCenter"
-            android:adjustViewBounds="true"
-    />
-
-    <ImageView
-            android:id="@+id/after_image_3_view_id"
+            android:id="@+id/base_image_view_id"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitCenter"
@@ -38,46 +15,9 @@
 
     <LinearLayout android:layout_width="match_parent"
                   android:layout_height="wrap_content"
-                  android:layout_alignTop="@id/before_image_view_id"
-                  android:layout_alignBottom="@id/before_image_view_id"
-                  android:orientation="vertical">
-
-        <SeekBar
-                android:id="@+id/seekbar_1_id"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:visibility="visible"
-                android:max="10000"
-                android:progress="0"
-                android:progressDrawable="@android:color/transparent"
-                android:thumb="@drawable/thumb_image"
-                android:thumbOffset="30dp"
-                android:layout_weight="1"
-        />
-        <SeekBar
-                android:id="@+id/seekbar_2_id"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:visibility="visible"
-                android:max="10000"
-                android:progress="0"
-                android:progressDrawable="@android:color/transparent"
-                android:thumb="@drawable/thumb_image"
-                android:thumbOffset="30dp"
-                android:layout_weight="1"
-        />
-
-        <SeekBar
-                android:id="@+id/seekbar_3_id"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:visibility="visible"
-                android:max="10000"
-                android:progress="0"
-                android:progressDrawable="@android:color/transparent"
-                android:thumb="@drawable/thumb_image"
-                android:thumbOffset="30dp"
-                android:layout_weight="1"
-        />
+                  android:layout_alignTop="@id/base_image_view_id"
+                  android:layout_alignBottom="@id/base_image_view_id"
+                  android:orientation="vertical"
+                  android:id="@+id/sliderContainer">
     </LinearLayout>
 </RelativeLayout>
