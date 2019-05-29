@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
-
 android {
     compileSdkVersion 28
 
@@ -28,7 +27,6 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':slidetorevealimage')
     implementation 'androidx.appcompat:appcompat:1.0.2'
 }

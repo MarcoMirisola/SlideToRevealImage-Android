@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide
 import java.lang.ref.WeakReference
 
 /**
- * Created by Jemo on 12/5/16.
+ * Created by Marco Mirisola on 29/5/19.
  */
 
 class ClipDrawableProcessorTask<T>(imageView: ImageView, seekBar: SeekBar, private val context: Context, private val loadedFinishedListener: OnAfterImageLoaded? = null) : AsyncTask<T, Void, ClipDrawable>() {

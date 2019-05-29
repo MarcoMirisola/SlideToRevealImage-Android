@@ -12,8 +12,6 @@ class MainActivity : AppCompatActivity() {
 
         before_after_slider_id.setBaseImage(getDrawable(R.drawable.image))
             .addImage(getDrawable(R.drawable.image_bw_1), getDrawable(R.drawable.thumb_image)!!)
-            .addImage(getDrawable(R.drawable.image_bw_2), getDrawable(R.drawable.thumb_image)!!)
-            .addImage(getDrawable(R.drawable.image_bw_3), getDrawable(R.drawable.thumb_image)!!)
             .build()
     }
 }
