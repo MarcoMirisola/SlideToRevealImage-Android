@@ -1,1 +1,1 @@
-include ':app', ':slidetorevealimage'
+include ':demo', ':slidetorevealimage'

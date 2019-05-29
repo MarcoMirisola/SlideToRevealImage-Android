@@ -6,7 +6,7 @@ android {
     compileSdkVersion 28
 
     defaultConfig {
-        applicationId "it.marcomirisola.slidetorevealimage"
+        applicationId "it.marcomirisola.slidetorevealimage.demo"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 5
