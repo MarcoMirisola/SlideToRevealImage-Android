@@ -3,13 +3,24 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
+    signingConfigs {
+        config {
+            if (project.hasProperty('RELEASE_STORE_FILE')) {
+                storeFile file(RELEASE_STORE_FILE)
+                storePassword RELEASE_STORE_PASSWORD
+                keyAlias RELEASE_KEY_ALIAS
+                keyPassword RELEASE_KEY_PASSWORD
+            }
+        }
+    }
+
     compileSdkVersion 28
 
     defaultConfig {
         applicationId "it.marcomirisola.slidetorevealimage.demo"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 5
+        versionCode 8
         versionName "3.0"
     }
 
@@ -17,6 +28,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
 

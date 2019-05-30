@@ -1,0 +1,2 @@
+json_key_file("/Users/marcomirisola/Documents/Certificate/api-8839636377204685612-405741-4697791fe4e1.json") # Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
+package_name("it.marcomirisola.slidetorevealimage.demo") # e.g. com.krausefx.app
