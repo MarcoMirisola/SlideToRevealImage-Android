@@ -6,7 +6,7 @@ platform :android do
   lane :internal do
  	sh("git", "checkout", "internal")
   	sh("git", "merge", "--squash", "bugfix")
-  	sh("git", "commmit")
+  	sh("git", "commit")
 
   	git_switch_branch(branch: "internal")
   	android_set_version_code(
