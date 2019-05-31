@@ -16,23 +16,22 @@
 default_platform(:android)
 
 platform :android do
-  desc "Runs all the tests"
-  lane :test do
-    gradle(task: "test")
-  end
-
   lane :internal do
   	git_switch_branch(branch: "internal")
   	android_set_version_code(
     	gradle_file: "demo/build.gradle" # optional
   	)
  
-  version_code = android_get_version_code(
+  	version_code = android_get_version_code(
     	gradle_file: "demo/build.gradle" # optional
   	)	
 
-  gradle(task: "clean assembleRelease")
-	
+  	gradle(task: "clean assembleRelease")
+
+  	commit_android_version_bump(
+    	gradle_file_folder:"project"
+  	)
+
 	add_git_tag(
  	 	grouping: "fastlane-builds",
  	 	prefix: "v",
