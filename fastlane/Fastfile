@@ -22,12 +22,23 @@ platform :android do
   end
 
   lane :internal do
+  	git_switch_branch(branch: "internal")
+  	android_set_version_code(
+    	gradle_file: "demo/build.gradle" # optional
+  	)
+ 
+  version_code = android_get_version_code(
+    	gradle_file: "demo/build.gradle" # optional
+  	)	
 
-  android_set_version_code(
-    gradle_file: "demo/build.gradle" # optional
-  )
-      gradle(task: "clean assembleRelease")
-
+  gradle(task: "clean assembleRelease")
+	
+	add_git_tag(
+ 	 	grouping: "fastlane-builds",
+ 	 	prefix: "v",
+  		postfix: "-RC1",
+  		build_number: "#{version_code}"
+	)
     # supply(
     #   track: "internal",
     #   skip_upload_metadata: true

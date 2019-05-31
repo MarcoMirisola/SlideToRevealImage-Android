@@ -5,17 +5,27 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.001065">
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000984">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: android_set_version_code" time="0.002783">
+      <testcase classname="fastlane.lanes" name="1: android_set_version_code" time="0.009585">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: gradle" time="6.960614">
+      <testcase classname="fastlane.lanes" name="2: android_get_version_code" time="0.001198">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="3: gradle" time="6.580385">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="4: add_git_tag" time="0.012459">
         
       </testcase>
     
