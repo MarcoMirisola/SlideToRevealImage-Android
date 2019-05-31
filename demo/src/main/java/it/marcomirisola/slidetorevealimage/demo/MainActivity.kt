@@ -6,7 +6,7 @@ import it.marcomirisola.slidetorevealimage.demo.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    //adzfas
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -15,4 +15,6 @@ class MainActivity : AppCompatActivity() {
             .addImage(getDrawable(R.drawable.image_bw_1), getDrawable(R.drawable.thumb_image)!!)
             .build()
     }
+
+    //ajksdh filuadhsil
 }
