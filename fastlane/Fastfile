@@ -5,7 +5,7 @@ default_platform(:android)
 platform :android do
   lane :internal do
  	sh("git", "checkout", "internal")
-  	sh("git", "merge", "--squash", "bugfix")
+  	sh("git", "merge", "--squash", "demo")
   	sh("git", "commit")
 
   	git_switch_branch(branch: "internal")
