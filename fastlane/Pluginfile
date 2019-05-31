@@ -4,3 +4,4 @@
 
 gem 'fastlane-plugin-versioning_android'
 gem 'fastlane-plugin-git_switch_branch'
+gem 'fastlane-plugin-commit_android_version_bump'
