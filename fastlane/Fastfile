@@ -6,7 +6,8 @@ platform :android do
   lane :internal do
   	sh("git", "checkout", "internal")
   	sh("git", "merge", "--strategy-option=theirs", "--squash", "demo")
-  	sh("git", "commit", "-m")
+  	sh("git", "commit", "-m", "merge")
+
 
   	android_set_version_code(
     	gradle_file: "demo/build.gradle" # optional
