@@ -4,7 +4,7 @@ default_platform(:android)
 
 platform :android do
   lane :internal do
-  	git_switch_branch(branch: "internal")
+  	sh("git", "checkout", "internal")
   	sh("git", "merge", "--squash", "demo")
   	sh("git", "commit", "-m", "merge")
 
@@ -33,6 +33,9 @@ platform :android do
   		postfix: "-#{version_name}",
   		build_number: "#{version_code}"
 	)
+
+  	sh("git", "checkout", "demo")
+
     # supply(
     #   track: "internal",
     #   skip_upload_metadata: true
