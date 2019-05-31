@@ -5,11 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import it.marcomirisola.slidetorevealimage.demo.R
 import kotlinx.android.synthetic.main.activity_main.*
 //proveeeee
-
-
-
-
-
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
