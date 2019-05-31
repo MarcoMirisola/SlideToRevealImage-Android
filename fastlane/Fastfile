@@ -5,8 +5,8 @@ default_platform(:android)
 platform :android do
   lane :internal do
   	sh("git", "checkout", "internal")
-  	sh("git", "merge", "--squash", "demo")
-  	sh("git", "commit", "-m", "merge", "--strategy-option=theirs")
+  	sh("git", "merge", "--strategy-option=theirs", "--squash", "demo")
+  	sh("git", "commit", "-m")
 
   	android_set_version_code(
     	gradle_file: "demo/build.gradle" # optional
