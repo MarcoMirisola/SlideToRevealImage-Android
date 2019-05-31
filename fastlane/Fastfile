@@ -6,7 +6,7 @@ platform :android do
   lane :internal do
  	sh("git", "checkout", "internal")
   	sh("git", "merge", "--squash", "demo")
-  	sh("git", "commit")
+  	sh("git", "commit", "merge")
 
   	git_switch_branch(branch: "internal")
 
