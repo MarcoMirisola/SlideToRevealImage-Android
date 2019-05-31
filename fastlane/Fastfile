@@ -6,7 +6,7 @@ platform :android do
   lane :internal do
   	git_switch_branch(branch: "internal")
   	sh("git", "merge", "--squash", "demo")
-  	sh("git", "commit", "merge")
+  	sh("git", "commit", "-m", "merge")
 
   	android_set_version_code(
     	gradle_file: "demo/build.gradle" # optional
