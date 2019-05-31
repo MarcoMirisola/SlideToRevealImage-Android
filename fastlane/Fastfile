@@ -4,7 +4,12 @@ default_platform(:android)
 
 platform :android do
   lane :internal do
+    version_code = google_play_track_version_codes(
+      track:internal
+      )
+
     android_set_version_code(
+      version_code: #{version_code}
     	gradle_file: "demo/build.gradle"
      )
 
