@@ -29,7 +29,7 @@ platform :android do
   	gradle(task: "clean assembleRelease")
 
   	commit_android_version_bump(
-    	gradle_file_folder:"project"
+    	gradle_file_folder:"demo"
   	)
 
 	add_git_tag(
