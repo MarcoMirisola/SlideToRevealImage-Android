@@ -20,7 +20,11 @@ android {
         applicationId "it.marcomirisola.slidetorevealimage.demo"
         minSdkVersion 21
         targetSdkVersion 28
+<<<<<<< HEAD
         versionCode 19
+=======
+        versionCode 8
+>>>>>>> demo
         versionName "3.0"
     }
 
