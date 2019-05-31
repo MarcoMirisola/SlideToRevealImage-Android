@@ -24,7 +24,11 @@ platform :android do
  
   	version_code = android_get_version_code(
     	gradle_file: "demo/build.gradle" # optional
-  	)	
+  	)
+
+  	version_name = android_get_version_name(
+    	gradle_file: "demo/build.gradle" # optional
+  	)		
 
   	gradle(task: "clean assembleRelease")
 
@@ -35,7 +39,7 @@ platform :android do
 	add_git_tag(
  	 	grouping: "fastlane-builds",
  	 	prefix: "v",
-  		postfix: "-RC1",
+  		postfix: "-#{version_name}",
   		build_number: "#{version_code}"
 	)
     # supply(
