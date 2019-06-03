@@ -10,7 +10,7 @@ platform :android do
 				)
 
 			android_set_version_code(
-				version_code: version_code[0].to_i + 1,
+				#version_code: version_code[0].to_i + 1,
 				gradle_file: "demo/build.gradle"
 				)
 
@@ -27,7 +27,7 @@ platform :android do
 		git_commit(
 			path: ["./*.gradle"], 
 			message: "Bump version to #{version_name} - build #{version_code}",
-			allow_nothing_to_commit: true
+			allow_nothing_to_commit: false
 			)
 
 		sh("git", "checkout", "internal")
