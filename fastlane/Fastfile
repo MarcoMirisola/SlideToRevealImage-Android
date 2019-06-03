@@ -3,47 +3,48 @@
 default_platform(:android)
 
 platform :android do
-  lane :internal do
-    version_code = google_play_track_version_codes(
-      track: "internal"
-      )
+	lane :internal do
+		version_code = google_play_track_version_codes(
+			track: "internal"
+			)
 
-    android_set_version_code(
-      version_code: version_code[0].to_i + 1,
-    	gradle_file: "demo/build.gradle"
-     )
+		android_set_version_code(
+			version_code: version_code[0].to_i + 1,
+			gradle_file: "demo/build.gradle"
+			)
 
-    version_code = android_get_version_code(
-    	gradle_file: "demo/build.gradle"
-     )
+		version_code = android_get_version_code(
+			gradle_file: "demo/build.gradle"
+			)
 
-    version_name = android_get_version_name(
-    	gradle_file: "demo/build.gradle"
-     )		
+		version_name = android_get_version_name(
+			gradle_file: "demo/build.gradle"
+			)		
 
-   #gradle(task: "clean assembleRelease")
+		gradle(task: "clean assembleRelease")
 
-    commit_android_version_bump(
-    	gradle_file_folder:"demo"
-     )
+		git_commit(
+			path: ["./*.gradle"], message: "Bump version to #{version_name} - build #{version_code}",
+			allow_nothing_to_commit
+			)
 
-    sh("git", "checkout", "internal")
-    sh("git", "merge", "--squash", "demo")
-    sh("git", "commit", "-m", "merge demo into internal in squash mode")
+		sh("git", "checkout", "internal")
+		sh("git", "merge", "--squash", "demo")
+		sh("git", "commit", "-m", "merge demo into internal in squash mode")
 
-    add_git_tag(
-      grouping: "fastlane-builds",
-      prefix: "v",
-      postfix: "-#{version_name}",
-      build_number: "#{version_code}"
-      )
+		add_git_tag(
+			grouping: "fastlane-builds",
+			prefix: "v",
+			postfix: "-#{version_name}",
+			build_number: "#{version_code}"
+			)
 
-    sh("git", "checkout", "demo")
+		sh("git", "checkout", "demo")
 
     # supply(
     #   track: "internal",
     #   skip_upload_metadata: true
     #   )
 
-  end
+end
 end
