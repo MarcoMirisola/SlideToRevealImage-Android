@@ -15,9 +15,8 @@ import it.marcomirisola.extensions.stayVisibleOrGone
 import it.marcomirisola.slidetorevealimage.R
 import kotlinx.android.synthetic.main.slider_layout.view.*
 
-
 /**
- * Created by Jemo on 12/5/16.
+ * Created by Marco Mirisola on 29/5/19.
  */
 
 class SlideToRevealImage : RelativeLayout, ClipDrawableProcessorTask.OnAfterImageLoaded {
