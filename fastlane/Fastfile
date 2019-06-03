@@ -23,7 +23,7 @@ platform :android do
 				)		
 
 		#gradle(task: "clean assembleRelease")
-		rescue
+		#rescue
 		git_commit(
 			path: ["./*.gradle"], 
 			message: "Bump version to #{version_name} - build #{version_code}",
