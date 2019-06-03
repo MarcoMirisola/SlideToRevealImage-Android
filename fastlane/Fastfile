@@ -21,11 +21,12 @@ platform :android do
 			gradle_file: "demo/build.gradle"
 			)		
 
-		gradle(task: "clean assembleRelease")
+		#gradle(task: "clean assembleRelease")
 
 		git_commit(
-			path: ["./*.gradle"], message: "Bump version to #{version_name} - build #{version_code}",
-			allow_nothing_to_commit
+			path: ["./*.gradle"], 
+			message: "Bump version to #{version_name} - build #{version_code}",
+			allow_nothing_to_commit: true
 			)
 
 		sh("git", "checkout", "internal")
