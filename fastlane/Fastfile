@@ -1,54 +1,36 @@
-# update_fastlane
-
 default_platform(:android)
 
 platform :android do
-	lane :internal do
-		begin
-			version_code = google_play_track_version_codes(
-				track: "internal"
-				)
+  lane :internal do
+    ensure_git_branch(
+      branch: 'internal'
+      )
 
-			android_set_version_code(
-				gradle_file: "demo/build.gradle"
-				)
+    android_set_version_code
+    version_code = android_get_version_code
+    version_name = android_get_version_name  
 
-			version_code = android_get_version_code(
-				gradle_file: "demo/build.gradle"
-				)
+    gradle(
+      task: "clean bundle",
+      flavor: "store",
+      build_type: "Release",
+      )
 
-			version_name = android_get_version_name(
-				gradle_file: "demo/build.gradle"
-				)		
+    git_commit(
+      path: ["./*.gradle"], 
+      message: "Bump version to #{version_name} - build #{version_code}",
+      allow_nothing_to_commit: false
+      )
 
-		#gradle(task: "clean assembleRelease")
-		#rescue
-		git_commit(
-			path: ["./*.gradle"], 
-			message: "Bump version to #{version_name} - build #{version_code}",
-			allow_nothing_to_commit: false
-			)
-
-		add_git_tag(
-			grouping: "fastlane-builds",
-			prefix: "v",
-			postfix: "-#{version_name}",
-			build_number: "#{version_code}"
-			)
-
-		push_to_git_remote(
-  			remote: "origin",         # optional, default: "origin"
-  			local_branch: "internal",  # optional, aliased by "branch", default is set to current branch
-  			remote_branch: "internal", # optional, default is set to local_branch
-  			tags: true,    # optional, default: true
- 			no_verify: true,# optional, default: false
-  )
-	end
-
-    # supply(
-    #   track: "internal",
-    #   skip_upload_metadata: true
-    #   )
-
-end
+    add_git_tag(
+      grouping: "fastlane-builds",
+      prefix: "v",
+      postfix: "-#{version_name}",
+      build_number: "#{version_code}"
+      )    
+    supply(
+      track: "internal",
+      skip_upload_metadata: true
+      )
+  end
 end

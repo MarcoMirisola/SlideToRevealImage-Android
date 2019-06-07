@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         before_after_slider_id.setBaseImage(getDrawable(R.drawable.image))
-            .addImage(getDrawable(R.drawable.image_bw_1), getDrawable(R.drawable.thumb_image)!!)
+            .addImage(getDrawable(R.drawable.image_bw_1), getDrawable(R.drawable.scroll)!!)
             .build()
     }
 }
