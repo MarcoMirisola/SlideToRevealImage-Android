@@ -4,14 +4,14 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.github.dcendents.android-maven'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
 
     defaultConfig {
 
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 7
-        versionName "3.0"
+        versionName "3.0.2"
     }
 
     buildTypes {
