@@ -4,12 +4,12 @@ apply plugin: 'kotlin-android-extensions'
 
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 30
 
     defaultConfig {
         applicationId "it.marcomirisola.slidetorevealimage"
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion 30
         versionCode 5
         versionName "3.0"
     }
@@ -30,7 +30,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':slidetorevealimage')
-    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
 }
 
 repositories {

@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
@@ -30,6 +31,8 @@ class SlideToRevealImage : RelativeLayout, ClipDrawableProcessorTask.OnAfterImag
         LayoutInflater.from(context).inflate(R.layout.slider_layout, this)
     }
 
+    private var mThumbAtBottom = false
+
     /**
      * set original image
      */
@@ -49,6 +52,10 @@ class SlideToRevealImage : RelativeLayout, ClipDrawableProcessorTask.OnAfterImag
 
     fun addImage(imageDrawable: Drawable?, thumb: Drawable): SlideToRevealImage {
         return addImage(null, imageDrawable, thumb)
+    }
+
+    fun thumbAtBottom(thumbAtBottom: Boolean) {
+        mThumbAtBottom = thumbAtBottom
     }
 
 
@@ -76,19 +83,21 @@ class SlideToRevealImage : RelativeLayout, ClipDrawableProcessorTask.OnAfterImag
     }
 
     fun build() {
-
+        if (mThumbAtBottom) {
+            val lp = sliderContainer.layoutParams as LayoutParams
+            lp.removeRule(ALIGN_TOP)
+        }
         for ((index, thumb) in thumbDrawables.withIndex()) {
             val seekBar = SeekBar(context)
             seekBar.layoutParams = LinearLayout.LayoutParams(
                 LayoutParams.MATCH_PARENT,
-                0,
+                if(mThumbAtBottom) thumb.intrinsicHeight else 0,
                 1f
             )
             seekBar.setPadding(0, 0, 0, 0)
             seekBar.visibility = View.VISIBLE
             seekBar.max = 10000
             seekBar.progress = 10000 / (thumbDrawables.size + 1) * (thumbDrawables.size - index)
-
             seekBar.thumb = thumb
             seekBar.progressDrawable = null
 
