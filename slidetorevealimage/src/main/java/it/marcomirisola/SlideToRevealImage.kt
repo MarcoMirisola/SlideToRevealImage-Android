@@ -66,12 +66,12 @@ class SlideToRevealImage : RelativeLayout, ClipDrawableProcessorTask.OnAfterImag
 
     private fun addImage(imageUri: String?, imageDrawable: Drawable?, thumb: Drawable): SlideToRevealImage {
         val imageView = ImageView(context)
+        imageView.adjustViewBounds = true
         imageView.layoutParams = LayoutParams(
-            LayoutParams.WRAP_CONTENT,
+            LayoutParams.MATCH_PARENT,
             LayoutParams.WRAP_CONTENT
         )
-        imageView.scaleType = ImageView.ScaleType.FIT_CENTER
-        imageView.adjustViewBounds = true
+        imageView.scaleType = ImageView.ScaleType.CENTER_CROP
         rootLayout.addView(imageView)
         imageViews.add(imageView)
         thumbDrawables.add(thumb)
